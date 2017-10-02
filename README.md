@@ -36,3 +36,15 @@ Run the container, output is directed to stdout:
 ```
 docker run mro-benchmark
 ```
+
+## Performance Metrics
+| Environment   | Container     | Results  |
+| ------------- |:-------------:| -----:|
+| Laptop<sup>*</sup>        | Base R        | [a link]() |
+| Laptop<sup>*</sup>        | Microsoft R Open      |   [a link]() |
+| Linux VM<sup>**</sup>      | Base R        | [a link]() |
+| Linux VM<sup>**</sup>        | Microsoft R Open      |   [a link]() |
+
+<sup>*</sup> - cpu: 4 / ram: 16GB
+<sup>**</sup> - cpu: 4 / ram: 32GB
+
