@@ -40,11 +40,9 @@ docker run mro-benchmark
 ## Performance Metrics
 | Environment   | Container     | Results  |
 | ------------- |:-------------:| -----:|
-| Laptop<sup>*</sup>        | Base R        | [a link]() |
-| Laptop<sup>*</sup>        | Microsoft R Open      |   [a link]() |
-| Linux VM<sup>**</sup>      | Base R        | [a link]() |
-| Linux VM<sup>**</sup>        | Microsoft R Open      |   [a link]() |
+| Laptop<sup>*</sup>        | Base R        | [results](results/laptop_baser.txt) |
+| Laptop<sup>*</sup>        | Microsoft R Open<sup>**</sup>      |   [results](results/laptop_mro.txt) |
 
-<sup>*</sup> - cpu: 4 / ram: 16GB
-<sup>**</sup> - cpu: 4 / ram: 32GB
+<sup>*</sup> - cpu: 4 / ram: 16GB  
+<sup>**</sup> - *defaults to using 2 cores*
 

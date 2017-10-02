@@ -1,0 +1,138 @@
+
+R version 3.4.2 (2017-09-28) -- "Short Summer"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # Demo for MRO and MKL
+> 
+> # Snippets taken from https://mran.revolutionanalytics.com/documents/rro/multithread/
+> cat("R version\n")
+R version
+> print(R.version)
+               _                           
+platform       x86_64-pc-linux-gnu         
+arch           x86_64                      
+os             linux-gnu                   
+system         x86_64, linux-gnu           
+status                                     
+major          3                           
+minor          4.2                         
+year           2017                        
+month          09                          
+day            28                          
+svn rev        73368                       
+language       R                           
+version.string R version 3.4.2 (2017-09-28)
+nickname       Short Summer                
+> cat("=========\n")
+=========
+> 
+> if(exists("Revo.version")) {
++   cat("Revo version\n")
++   print(Revo.version)
++   cat("=========\n")
++ }
+> 
+> print(sessionInfo())
+R version 3.4.2 (2017-09-28)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Debian GNU/Linux buster/sid
+
+Matrix products: default
+BLAS: /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.7.1
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.7.1
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_3.4.2
+> cat("The package RevoUtilsMath is already attached.\n")
+The package RevoUtilsMath is already attached.
+> cat("=========\n")
+=========
+> print(options("repos"))
+$repos
+                       CRAN 
+"https://cran.rstudio.com/" 
+
+> cat("A MRAN snapshot is configured as CRAN repository.\n")
+A MRAN snapshot is configured as CRAN repository.
+> cat("=========\n")
+=========
+> 
+> cat("Run Simon Urbanek's benchmark v2.5:")
+Run Simon Urbanek's benchmark v2.5:> # https://mran.revolutionanalytics.com/documents/rro/multithread/#mt-setget
+> totalTestTime <- system.time({
++   source("R-benchmark-25.R")
++ })
+
+
+   R Benchmark 2.5
+   ===============
+Number of times each test is run__________________________:  3
+
+   I. Matrix calculation
+   ---------------------
+Creation, transp., deformation of a 2500x2500 matrix (sec):  0.752666666666667  Wall time:  2.74232649803162 
+2400x2400 normal distributed random matrix ^1000____ (sec):  0.550333333333333  Wall time:  3.72320556640625 
+Sorting of 7,000,000 random values__________________ (sec):  0.804333333333333  Wall time:  4.32345843315125 
+2800x2800 cross-product matrix (b = a' * a)_________ (sec):  13.773  Wall time:  43.3916065692902 
+Linear regr. over a 3000x3000 matrix (c = a \ b')___ (sec):  6.24166666666666  Wall time:  20.1417481899261 
+                      --------------------------------------------
+                 Trimmed geom. mean (2 extremes eliminated):  1.55756593594177 
+
+   II. Matrix functions
+   --------------------
+FFT over 2,400,000 random values____________________ (sec):  0.49633333333333 
+Eigenvalues of a 640x640 random matrix______________ (sec):  0.789333333333336 
+Determinant of a 2500x2500 random matrix____________ (sec):  3.636 
+Cholesky decomposition of a 3000x3000 matrix________ (sec):  4.68566666666666 
+Inverse of a 1600x1600 random matrix________________ (sec):  3.535 
+                      --------------------------------------------
+                Trimmed geom. mean (2 extremes eliminated):  2.16483389288953 
+
+   III. Programmation
+   ------------------
+3,500,000 Fibonacci numbers calculation (vector calc)(sec):  0.530999999999987 
+Creation of a 3000x3000 Hilbert matrix (matrix calc) (sec):  0.275666666666666 
+Grand common divisors of 400,000 pairs (recursion)__ (sec):  0.267333333333331 
+Creation of a 500x500 Toeplitz matrix (loops)_______ (sec):  0.330666666666663 
+Escoufier's method on a 45x45 matrix (mixed)________ (sec):  0.344999999999999 
+                      --------------------------------------------
+                Trimmed geom. mean (2 extremes eliminated):  0.315644279165241 
+
+
+Total time for all 15 tests_________________________ (sec):  37.014 
+Overall mean (sum of I, II and III trimmed means/3)_ (sec):  1.02099350784481 
+                      --- End of test ---
+
+> cat("Total test time:", totalTestTime[[3]], "seconds\n")
+Total test time: 177.754 seconds
+> cat("Try the same benchmark on your host machine!\n")
+Try the same benchmark on your host machine!
+> cat("============\n")
+============
+> 

@@ -1,0 +1,170 @@
+
+R version 3.2.5 (2016-04-14) -- "Very, Very Secure Dishes"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+Microsoft R Open 3.2.5
+Default CRAN mirror snapshot taken on 2016-05-01
+The enhanced R distribution from Microsoft
+Visit https://mran.microsoft.com/ for information
+about additional features.
+
+
+
+Microsoft R Services MKL
+End User License Agreement
+
+These license terms are an agreement between Microsoft Corporation ("Microsoft" or "us") and you ("User" or "you"). Please read them.  By selecting the "I ACCEPT" box, accessing, or otherwise using the R Services MKL software or documentation, you agree to all the terms of this agreement.  If you do not agree with all of these terms, do not select the "I ACCEPT" box, access, or otherwise use the R Services MKL software or documentation.  User does not become a licensed user of, and is not authorized to use, the R Services MKL software or documentation unless and until it has agreed to be bound by all of these terms.
+
+R Services MKL is a software package provided for use with Microsoft R Server, Microsoft R Open, and any successors or other software applications released by us ("Licensed Products") that can be used with the Intel® Math Kernel Libraries ("MKL")(for more information, see https://software.intel.com/en-us/intel-mkl).  This software package is referred to herein as the "R Services MKL."  Intel Corporation is referred to as "Intel."
+
+1. License.  The R Services MKL is licensed for exclusive use with the Licensed Products. Subject to all of the terms and conditions of this Agreement, Microsoft grants User a non-exclusive, non-transferable, non-sublicensable right to use R Services MKL. R Services MKL must be used as a single integrated software application and may not be separated into its constituent parts. 
+
+2. Restrictions. User shall not, directly or indirectly: (i) sublicense, resell, rent, lease, distribute, market, commercialize, or otherwise transfer rights or usage to R Services MKL or any component thereof; (ii) modify or create any derivative works of R Services MKL; (iii) remove or alter any copyright, trademark or proprietary notice in R Services MKL; or (iv) reverse engineer, disassemble, attempt to obtain the source code for, decompile or modify any portion of R Services MKL (except to the extent that such restrictions are not permissible under applicable law). 
+
+3. Proprietary Rights.  The R Services MKL is licensed, not sold, by its respective owners and licensors. Microsoft, Intel and their licensors shall own all right, title, and interest to R Services MKL and any intellectual or proprietary rights therein (including but not limited to patents, copyrights, trademarks, service marks, trade names and other trade secret rights).  Except as expressly provided herein, no licenses of any kind are granted hereunder, whether by implication, estoppel, or otherwise, and all rights that are not expressly granted are hereby reserved.  
+ 	 
+4. As Is/Disclaimer of Warranty.  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EXCEPT AS EXPRESSLY STATED IN THIS AGREEMENT, R SERVICES MKL AS PROVIDED BY MICROSOFT AND ITS LICENSORS IS PROVIDED AND LICENSED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS, IMPLIED, STATUTORY OR OTHERWISE, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE.  MICROSOFT AND ITS LICENSORS DO NOT WARRANT OR GUARANTEE THAT THE R SERVICES MKL SOFTWARE WILL MEET USER'S REQUIREMENTS OR THAT THE USE OF R SERVICES MKL WILL BE UNINTERRUPTED OR ERROR FREE.  SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES SO THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU.
+
+5. Limitation of Liability.  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL MICROSOFT, INTEL OR THEIR LICENSORS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES ARISING OUT OF OR IN ANY WAY RELATING TO THIS AGREEMENT OR THE USE OF OR INABILITY TO USE R SERVICES MKL INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, WORK STOPPAGE, LOST PROFITS, LOSS OF DATA, COMPUTER FAILURE OR ANY AND ALL OTHER COMMERCIAL DAMAGES OR LOSSES EVEN IF ADVISED OF THE POSSIBILITY THEREOF AND REGARDLESS OF THE LEGAL OR EQUITABLE THEORY (CONTRACT, TORT (INCLUDING NEGLIGENCE) OR OTHERWISE) UPON WHICH THE CLAIM IS BASED.  
+
+6. General.  User agrees and acknowledges that neither R Services MKL, or any direct product thereof, may be exported outside the United States or re-exported except as authorized and as permitted by the laws and regulations of the United States and/or the laws and regulations of the jurisdiction (if other than the United States) in which User rightfully obtained R Services MKL.  Except as expressly provided herein, User may not assign its rights or delegate its obligations under this Agreement without the prior written consent of Microsoft; Microsoft may assign its rights under this Agreement without condition.  This Agreement will be binding upon and inure to the benefit of the parties, their successors and permitted assigns.  The laws of the State of Washington govern this Agreement.  If federal jurisdiction exists, the parties consent to exclusive jurisdiction and venue in the federal courts in King County, Washington.  If not, the parties consent to exclusive jurisdiction and venue in the Superior Court of King County, Washington.  The parties agree the United Nations Convention on Contracts for the International Sale of Goods will not apply to this Agreement.  The failure of either party to require performance by the other party of any provision hereof shall not affect the full right to require such performance at any time thereafter; nor shall the waiver by either party of a breach of any provision hereof be taken or held to be a waiver of the provision itself.  If any provision of this Agreement is found void and unenforceable, it will be replaced to the extent possible with a provision that comes closest to the meaning of the original provision.  This Agreement, and the documents referenced in this Agreement, constitute the entire agreement between User and Microsoft relating to its subject matter and all terms herein and supersedes all prior or contemporaneous agreements or understandings.  No other terms and conditions shall apply.  This Agreement may be modified or changed only in writing by authorized representatives of User and Microsoft. 
+
+Intel is a trademark of Intel Corporation in the U.S. and/or other countries.
+
+
+> # Demo for MRO and MKL
+> 
+> # Snippets taken from https://mran.revolutionanalytics.com/documents/rro/multithread/
+> cat("R version\n")
+R version
+> print(R.version)
+               _                           
+platform       x86_64-pc-linux-gnu         
+arch           x86_64                      
+os             linux-gnu                   
+system         x86_64, linux-gnu           
+status                                     
+major          3                           
+minor          2.5                         
+year           2016                        
+month          04                          
+day            14                          
+svn rev        70478                       
+language       R                           
+version.string R version 3.2.5 (2016-04-14)
+nickname       Very, Very Secure Dishes    
+> cat("=========\n")
+=========
+> 
+> if(exists("Revo.version")) {
++   cat("Revo version\n")
++   print(Revo.version)
++   cat("=========\n")
++ }
+Revo version
+        _  
+major   3  
+minor   2.5
+BuildID 1  
+=========
+> 
+> print(sessionInfo())
+R version 3.2.5 (2016-04-14)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 14.04.4 LTS
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] RevoUtilsMath_3.2.5
+> cat("The package RevoUtilsMath is already attached.\n")
+The package RevoUtilsMath is already attached.
+> cat("=========\n")
+=========
+> print(options("repos"))
+$repos
+                                            CRAN 
+"https://mran.microsoft.com/snapshot/2016-05-01" 
+
+> cat("A MRAN snapshot is configured as CRAN repository.\n")
+A MRAN snapshot is configured as CRAN repository.
+> cat("=========\n")
+=========
+> 
+> cat("Run Simon Urbanek's benchmark v2.5:")
+Run Simon Urbanek's benchmark v2.5:> # https://mran.revolutionanalytics.com/documents/rro/multithread/#mt-setget
+> totalTestTime <- system.time({
++   source("R-benchmark-25.R")
++ })
+
+
+   R Benchmark 2.5
+   ===============
+Number of times each test is run__________________________:  3
+
+   I. Matrix calculation
+   ---------------------
+Creation, transp., deformation of a 2500x2500 matrix (sec):  0.887666666666666  Wall time:  3.17385959625244 
+2400x2400 normal distributed random matrix ^1000____ (sec):  0.651  Wall time:  4.50057291984558 
+Sorting of 7,000,000 random values__________________ (sec):  0.838666666666667  Wall time:  4.66356992721558 
+2800x2800 cross-product matrix (b = a' * a)_________ (sec):  0.394666666666666  Wall time:  3.74025297164917 
+Linear regr. over a 3000x3000 matrix (c = a \ b')___ (sec):  0.226  Wall time:  2.20100569725037 
+                      --------------------------------------------
+                 Trimmed geom. mean (2 extremes eliminated):  0.599515302379625 
+
+   II. Matrix functions
+   --------------------
+FFT over 2,400,000 random values____________________ (sec):  0.699999999999999 
+Eigenvalues of a 640x640 random matrix______________ (sec):  0.473333333333334 
+Determinant of a 2500x2500 random matrix____________ (sec):  0.491333333333333 
+Cholesky decomposition of a 3000x3000 matrix________ (sec):  0.423333333333336 
+Inverse of a 1600x1600 random matrix________________ (sec):  0.270000000000003 
+                      --------------------------------------------
+                Trimmed geom. mean (2 extremes eliminated):  0.461751797681651 
+
+   III. Programmation
+   ------------------
+3,500,000 Fibonacci numbers calculation (vector calc)(sec):  0.632 
+Creation of a 3000x3000 Hilbert matrix (matrix calc) (sec):  0.270333333333333 
+Grand common divisors of 400,000 pairs (recursion)__ (sec):  0.43933333333333 
+Creation of a 500x500 Toeplitz matrix (loops)_______ (sec):  0.371666666666667 
+Escoufier's method on a 45x45 matrix (mixed)________ (sec):  0.339999999999996 
+                      --------------------------------------------
+                Trimmed geom. mean (2 extremes eliminated):  0.381483327168436 
+
+
+Total time for all 15 tests_________________________ (sec):  7.40933333333333 
+Overall mean (sum of I, II and III trimmed means/3)_ (sec):  0.472673741402298 
+                      --- End of test ---
+
+> cat("Total test time:", totalTestTime[[3]], "seconds\n")
+Total test time: 47.116 seconds
+> cat("Try the same benchmark on your host machine!\n")
+Try the same benchmark on your host machine!
+> cat("============\n")
+============
+> 
