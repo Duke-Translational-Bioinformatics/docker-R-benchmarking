@@ -1,0 +1,1 @@
+**The main container in this directory is taken from [rocker/r-base](https://github.com/rocker-org/rocker/tree/master/r-base)**
